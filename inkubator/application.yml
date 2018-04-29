@@ -5,7 +5,7 @@
 # Property used on app startup to check the config server status
 configserver:
     name: JHipster Registry config server
-    status: GitHub   -------   Connected to the JHipster Registry config server!!!!!!
+    status: GitHub  --- Connected to the JHipster Registry config server!!!!!!
 
 # Default JWT secret token (to be changed in production!)
 jhipster:
@@ -18,4 +18,3 @@ jhipster:
 logging:
     path: /tmp
     file: ${spring.application.name}.log
-
