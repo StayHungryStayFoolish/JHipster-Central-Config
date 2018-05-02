@@ -20,3 +20,39 @@ logging:
     file: ${spring.application.name}.log
 encrypt:
     key:'{cipher}61060e7b6ae2e8c65156ba42214dc9529dfd9f3207ab24861f67b2906a39fb3ea023e79906f310c0b4e6bdb64ad166b2d9f9c16bd6599c2945e1d1e9d7015b1d59194c39cd7438a38b8b708315891b49'
+
+# ===================================================================
+# Spring Cloud Config bootstrap configuration for the "dev" profile
+# In prod profile, properties will be overwriten by the ones defined in bootstrap-prod.yml
+# ===================================================================
+
+spring:
+    application:
+        name: jhipster-registry
+    profiles:
+        active: dev
+        include: git
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/StayHungryStayFoolish/JHipster-Central-Config # https://github.com/jhipster/jhipster-registry-sample-config
+                    search-paths: inkubator
+#                native:
+#                    search-locations: file:./central-config
+                prefix: /inkubator
+                bootstrap: false
+            fail-fast: true
+            # name of the config server's property source (file.yml) that we want to use
+            name: jhipster-registry
+            profile: dev # profile(s) of the property source
+            label: master # toggle to switch to a different version of the configuration as stored in git
+            # it can be set to any label, branch or commit of the config source git repository
+
+info:
+    project:
+        version: #project.version#
+
+# uncomment to enable encryption features
+#encrypt:
+#    key: my-secret-encryption-key-to-change-in-production
