@@ -41,7 +41,7 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/inkubator_uaa?useUnicode=true&characterEncoding=utf8&useSSL=false
         username: root
-        password: admin
+        password: '{cipher}c8b6dd51e13ab4c8985ee0face26c3fd3784ba19d55fe54bfd80773203819dd7'
         hikari:
             data-source-properties:
                 cachePrepStmts: true
