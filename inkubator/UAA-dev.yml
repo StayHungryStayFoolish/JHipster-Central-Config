@@ -24,7 +24,7 @@ eureka:
         prefer-ip-address: true
     client:
         service-url:
-            defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
+            defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/  #http://admin:${security.user.password:admin}@localhost:8761/eureka/
 
 spring:
     profiles:
@@ -41,7 +41,7 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/uaa?useUnicode=true&characterEncoding=utf8&useSSL=false
         username: root
-        password: '{cipher}c8b6dd51e13ab4c8985ee0face26c3fd3784ba19d55fe54bfd80773203819dd7'
+        password: admin
         hikari:
             data-source-properties:
                 cachePrepStmts: true
@@ -58,7 +58,7 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
             hibernate.cache.region.factory_class: com.hazelcast.hibernate.HazelcastCacheRegionFactory
-            hibernate.cache.hazelcast.instance_name: INKubatorUAA
+            hibernate.cache.hazelcast.instance_name: uaa
             hibernate.cache.use_minimal_puts: true
             hibernate.cache.hazelcast.use_lite_member: true
     mail:
@@ -82,7 +82,7 @@ liquibase:
 
 # ===================================================================
 # To enable SSL, generate a certificate using:
-# keytool -genkey -alias INKubatorUAA -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
+# keytool -genkey -alias uaa -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
 #
 # You can also use Let's Encrypt:
 # https://maximilian-boehm.com/hp2121/Create-a-Java-Keystore-JKS-from-Let-s-Encrypt-Certificates.htm
@@ -95,7 +95,7 @@ liquibase:
 #        key-store: keystore.p12
 #        key-store-password: <your-password>
 #        key-store-type: PKCS12
-#        key-alias: INKubatorUAA
+#        key-alias: uaa
 # ===================================================================
 server:
     port: 9999
@@ -130,7 +130,7 @@ jhipster:
             client-id: internal
             client-secret: internal
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: INKubatorUAA@localhost
+        from: uaa@localhost
         base-url: http://127.0.0.1:9999
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
@@ -138,7 +138,7 @@ jhipster:
             enabled: false
             host: localhost
             port: 2003
-            prefix: INKubatorUAA
+            prefix: uaa
         prometheus: # Use the "prometheus" Maven profile to have the Prometheus dependencies
             enabled: false
             endpoint: /prometheusMetrics
@@ -175,4 +175,3 @@ uaa:
 # ===================================================================
 
 application:
-
