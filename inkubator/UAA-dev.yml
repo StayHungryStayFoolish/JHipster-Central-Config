@@ -39,7 +39,7 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/inkubator_uaa?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://localhost:3306/uaa?useUnicode=true&characterEncoding=utf8&useSSL=false
         username: root
         password: '{cipher}c8b6dd51e13ab4c8985ee0face26c3fd3784ba19d55fe54bfd80773203819dd7'
         hikari:
