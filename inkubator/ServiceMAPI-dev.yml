@@ -58,7 +58,7 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
             hibernate.cache.region.factory_class: com.hazelcast.hibernate.HazelcastCacheRegionFactory
-            hibernate.cache.hazelcast.instance_name: INKubatorUI
+            hibernate.cache.hazelcast.instance_name: ServiceMAPI
             hibernate.cache.use_minimal_puts: true
             hibernate.cache.hazelcast.use_lite_member: true
     mail:
@@ -82,7 +82,7 @@ liquibase:
 
 # ===================================================================
 # To enable SSL, generate a certificate using:
-# keytool -genkey -alias INKubatorUI -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
+# keytool -genkey -alias ServiceMAPI -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
 #
 # You can also use Let's Encrypt:
 # https://maximilian-boehm.com/hp2121/Create-a-Java-Keystore-JKS-from-Let-s-Encrypt-Certificates.htm
@@ -95,7 +95,7 @@ liquibase:
 #        key-store: keystore.p12
 #        key-store-password: <your-password>
 #        key-store-type: PKCS12
-#        key-alias: INKubatorUI
+#        key-alias: ServiceMAPI
 # ===================================================================
 server:
     port: 8082
@@ -128,20 +128,20 @@ jhipster:
         # max-age: 1800
     security:
         client-authorization:
-            access-token-uri: http://inkubatoruaa/oauth/token
-            token-service-id: inkubatoruaa
+            access-token-uri: http://uaa/oauth/token
+            token-service-id: uaa
             client-id: internal
             client-secret: internal
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: INKubatorUI@localhost
-        base-url: http://127.0.0.1:8081
+        from: ServiceMAPI@localhost
+        base-url: http://127.0.0.1:8082
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         graphite: # Use the "graphite" Maven profile to have the Graphite dependencies
             enabled: false
             host: localhost
             port: 2003
-            prefix: INKubatorUI
+            prefix: ServiceMAPI
         prometheus: # Use the "prometheus" Maven profile to have the Prometheus dependencies
             enabled: false
             endpoint: /prometheusMetrics
@@ -160,7 +160,7 @@ jhipster:
 
 oauth2:
     signature-verification:
-        public-key-endpoint-uri: http://inkubatoruaa/oauth/token_key
+        public-key-endpoint-uri: http://uaa/oauth/token_key
         #ttl for public keys to verify JWT tokens (in ms)
         ttl: 3600000
         #max. rate at which public keys will be fetched (in ms)
